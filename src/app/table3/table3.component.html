@@ -1,1 +1,32 @@
-<p>table3 works!</p>
+<mat-table multiTemplateDataRows [dataSource]="state.rows">
+  <ng-container matColumnDef="0">
+    <mat-header-cell *matHeaderCellDef>
+      <button mat-stroked-button (click)="state.toggleAll()">All</button>
+    </mat-header-cell>
+    <mat-cell *matCellDef="let row">
+      <button mat-icon-button (click)="state.toggle(row)">
+        <mat-icon>
+          {{ state.expanded.has(row) ? "expand_more" : "chevron_right" }}
+        </mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container
+    *ngFor="let colKey of state.cols.slice(1)"
+    [matColumnDef]="colKey"
+  >
+    <mat-header-cell mat-header-cell *matHeaderCellDef>
+      <span>Col {{ colKey }}</span>
+    </mat-header-cell>
+    <mat-cell *matCellDef="let row">
+      <span>{{ row[colKey] }}</span>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="state.cols; sticky: true"></mat-header-row>
+  <ng-container *matRowDef="let row; columns: state.cols">
+    <mat-row class="normal-row"></mat-row>
+    <app-details class="mat-row cdk-row" [row]="row"></app-details>
+  </ng-container>
+</mat-table>

@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+
+import { StateService } from '../state.service';
 
 @Component({
   selector: 'app-table3',
   templateUrl: './table3.component.html',
   styleUrls: ['./table3.component.scss']
 })
-export class Table3Component implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class Table3Component {
+  constructor(public state: StateService) {}
 }

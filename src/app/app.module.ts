@@ -9,6 +9,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Route, RouterModule } from '@angular/router';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
 
 import { AppComponent } from './app.component';
 import { Table0Component } from './table0/table0.component';
@@ -19,6 +21,7 @@ import { Table4Component } from './table4/table4.component';
 import { Table5Component } from './table5/table5.component';
 import { Table6Component } from './table6/table6.component';
 import { Table7Component } from './table7/table7.component';
+import { DetailsComponent } from './table3/details/details.component';
 
 const routes: Route[] = [
   {path:'', redirectTo:'0', pathMatch:'full'},
@@ -39,6 +42,8 @@ const matImports = [
   MatCheckboxModule,
   MatSelectModule,
   MatSnackBarModule,
+  MatIconModule,
+  MatButtonModule,
 ]
 
 @NgModule({
@@ -52,6 +57,7 @@ const matImports = [
     Table5Component,
     Table6Component,
     Table7Component,
+    DetailsComponent,
   ],
   imports: [
     ...matImports,
