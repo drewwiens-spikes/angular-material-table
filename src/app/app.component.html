@@ -1,13 +1,7 @@
-<!-- <pre>{{rows | json}}</pre> -->
-
-<table mat-table [dataSource]="rows" class="mat-elevation-z8">
-
-  <!-- Each Column -->
-  <ng-container *ngFor="let colKey of displayedColumns" [matColumnDef]="colKey">
-    <th mat-header-cell *matHeaderCellDef> Col {{colKey}} </th>
-    <td mat-cell *matCellDef="let row"> {{row[colKey]}} </td>
+<mat-toolbar>
+  <ng-container *ngFor="let i of range(8)">
+    <a [routerLink]="'' + i" routerLinkActive="current-route" (click)="measureTime()">{{ i }}</a>
   </ng-container>
+</mat-toolbar>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+<router-outlet></router-outlet>

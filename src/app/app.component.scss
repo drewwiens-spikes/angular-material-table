@@ -1,7 +1,15 @@
-:host {
-  display: block;
-  width: 75vw;
-  height: 75vh;
-  overflow: auto;
-  outline: 1px solid gray;
+mat-toolbar {
+  display: flex;
+  justify-content: center;
+  font-weight: normal;
+}
+
+.current-route {
+  font-weight: bold;
+  border: 1px solid black;
+}
+
+a {
+  padding: 0 20px;
+  text-decoration: none;
 }

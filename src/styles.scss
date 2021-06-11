@@ -6,9 +6,23 @@ body {
 }
 
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+app-root {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: auto 0 1fr;
+  justify-items: center;
+  box-sizing: border-box;
+
+  > :last-child {
+    width: 100vw;
+    height: 100%;
+    display: block;
+    overflow: auto;
+    outline: 1px solid lightgray;
+  }
 }

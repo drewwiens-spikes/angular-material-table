@@ -1,20 +1,65 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {MatTableModule} from '@angular/material/table';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatInputModule} from '@angular/material/input';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatSelectModule} from '@angular/material/select';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
+import { Route, RouterModule } from '@angular/router';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Table0Component } from './table0/table0.component';
+import { Table1Component } from './table1/table1.component';
+import { Table2Component } from './table2/table2.component';
+import { Table3Component } from './table3/table3.component';
+import { Table4Component } from './table4/table4.component';
+import { Table5Component } from './table5/table5.component';
+import { Table6Component } from './table6/table6.component';
+import { Table7Component } from './table7/table7.component';
+
+const routes: Route[] = [
+  {path:'', redirectTo:'0', pathMatch:'full'},
+  {path:'0', component:Table0Component },
+  {path:'1', component:Table1Component },
+  {path:'2', component:Table2Component },
+  {path:'3', component:Table3Component },
+  {path:'4', component:Table4Component },
+  {path:'5', component:Table5Component },
+  {path:'6', component:Table6Component },
+  {path:'7', component:Table7Component },
+]
+
+const matImports = [
+  MatTableModule,
+  MatToolbarModule,
+  MatInputModule,
+  MatCheckboxModule,
+  MatSelectModule,
+  MatSnackBarModule,
+]
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    Table0Component,
+    Table1Component,
+    Table2Component,
+    Table3Component,
+    Table4Component,
+    Table5Component,
+    Table6Component,
+    Table7Component,
   ],
   imports: [
+    ...matImports,
     BrowserModule,
     BrowserAnimationsModule,
-    MatTableModule
+    ReactiveFormsModule,
+    RouterModule.forRoot(routes),
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
