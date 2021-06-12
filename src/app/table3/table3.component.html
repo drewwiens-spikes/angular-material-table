@@ -17,10 +17,16 @@
     [matColumnDef]="colKey"
   >
     <mat-header-cell mat-header-cell *matHeaderCellDef>
-      <span>Col {{ colKey }}</span>
+      <span>
+        {{ colKey === "1" ? "ID" : "Region " + (+colKey - 1) }}
+      </span>
     </mat-header-cell>
     <mat-cell *matCellDef="let row">
-      <span>{{ row[colKey] }}</span>
+      <span>
+        {{
+          colKey === "1" ? row[colKey] * row[colKey] * row[colKey] : row[colKey]
+        }}
+      </span>
     </mat-cell>
   </ng-container>
 

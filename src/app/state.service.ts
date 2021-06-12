@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import * as casual from 'casual-browserify';
-import { range, chunk, mapKeys } from 'lodash';
+import { range, chunk, mapKeys, random } from 'lodash';
 
-export type Row = Record<string, string | boolean>;
+export type Row = Record<string, string | number | boolean>;
 
 const NUM_ROWS = 250;
-const NUM_COLS = 22;
-const WORDS = casual.array_of_words(NUM_ROWS * NUM_COLS);
-const ROWS = chunk(WORDS, NUM_COLS);
+const NUM_COLS = 25;
+const VALUES = range(NUM_ROWS * NUM_COLS).map(() => random(1, 1000));
+const ROWS = chunk(VALUES, NUM_COLS);
 
 @Injectable({ providedIn: 'root' })
 export class StateService {

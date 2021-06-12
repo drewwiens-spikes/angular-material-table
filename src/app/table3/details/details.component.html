@@ -1,11 +1,17 @@
-<mat-table [dataSource]="rows" *ngIf="row && state.expanded.has(row)">
+<div *ngIf="row && state.expanded.has(row)">
+  <mat-table [dataSource]="rows">
+    <ng-container *ngFor="let colKey of cols" [matColumnDef]="colKey">
+      <mat-header-cell *matHeaderCellDef>
+        {{ colKey === "0" ? "P/N" : "Year " + colKey }}
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        {{
+          colKey === "0" ? row[colKey] * row[colKey] * row[colKey] : row[colKey]
+        }}
+      </mat-cell>
+    </ng-container>
 
-  <ng-container *ngFor="let colKey of cols" [matColumnDef]="colKey">
-    <mat-header-cell *matHeaderCellDef> Detail {{colKey}} </mat-header-cell>
-    <mat-cell *matCellDef="let row"> {{row[colKey]}} </mat-cell>
-  </ng-container>
-
-  <mat-header-row *matHeaderRowDef="cols; sticky: true"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: cols;"></mat-row>
-
-</mat-table>
+    <mat-header-row *matHeaderRowDef="cols"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: cols"></mat-row>
+  </mat-table>
+</div>
