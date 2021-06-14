@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { range, chunk, mapKeys, random } from 'lodash';
+import { TableVirtualScrollDataSource } from 'ng-table-virtual-scroll';
 
 type Value = string | number | boolean;
 
@@ -14,4 +15,7 @@ const ROWS = chunk(VALUES, NUM_COLS);
 export class RowsService {
   cols = range(NUM_COLS).map(String);
   rows: Row[] = ROWS.map((r) => mapKeys(r, (_v, k) => String(k)));
+
+  // Only used for examples that use 'ng-table-virtual-scroll' lib:
+  dataSource = new TableVirtualScrollDataSource(this.rows);
 }
