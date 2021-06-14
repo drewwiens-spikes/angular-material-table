@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { range } from 'lodash';
 
-import { StateService } from './state.service';
+import { RowsService } from './services/rows.service';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +12,7 @@ import { StateService } from './state.service';
 export class AppComponent {
   range = range;
 
-  constructor(public state: StateService, private snackBar: MatSnackBar) {
+  constructor(public rowsSvc: RowsService, private snackBar: MatSnackBar) {
     this.measureTime();
   }
 

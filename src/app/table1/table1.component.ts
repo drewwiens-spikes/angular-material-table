@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { StateService } from '../state.service';
+import { RowsService } from '../services/rows.service';
 
 @Component({
   selector: 'app-table1',
@@ -8,5 +8,5 @@ import { StateService } from '../state.service';
   styleUrls: ['./table1.component.scss']
 })
 export class Table1Component {
-  constructor(public state: StateService) {}
+  constructor(public rowsSvc: RowsService) {}
 }

@@ -1,19 +1,19 @@
-<mat-table multiTemplateDataRows [dataSource]="state.rows">
+<mat-table multiTemplateDataRows [dataSource]="rowsSvc.rows">
   <ng-container matColumnDef="0">
     <mat-header-cell *matHeaderCellDef>
-      <button mat-stroked-button (click)="state.toggleAll()">All</button>
+      <button mat-stroked-button (click)="rowsStateSvc.toggleAll()">All</button>
     </mat-header-cell>
     <mat-cell *matCellDef="let row">
-      <button mat-icon-button (click)="state.toggle(row)">
+      <button mat-icon-button (click)="rowsStateSvc.toggle(row)">
         <mat-icon>
-          {{ state.expanded.has(row) ? "expand_more" : "chevron_right" }}
+          {{ rowsStateSvc.expanded.has(row) ? "expand_more" : "chevron_right" }}
         </mat-icon>
       </button>
     </mat-cell>
   </ng-container>
 
   <ng-container
-    *ngFor="let colKey of state.cols.slice(1)"
+    *ngFor="let colKey of rowsSvc.cols.slice(1)"
     [matColumnDef]="colKey"
   >
     <mat-header-cell mat-header-cell *matHeaderCellDef>
@@ -30,8 +30,10 @@
     </mat-cell>
   </ng-container>
 
-  <mat-header-row *matHeaderRowDef="state.cols; sticky: true"></mat-header-row>
-  <ng-container *matRowDef="let row; columns: state.cols">
+  <mat-header-row
+    *matHeaderRowDef="rowsSvc.cols; sticky: true"
+  ></mat-header-row>
+  <ng-container *matRowDef="let row; columns: rowsSvc.cols">
     <mat-row class="normal-row"></mat-row>
     <app-details class="mat-row cdk-row" [row]="row"></app-details>
   </ng-container>

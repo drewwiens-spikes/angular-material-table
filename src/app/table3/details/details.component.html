@@ -1,4 +1,4 @@
-<div *ngIf="row && state.expanded.has(row)">
+<div *ngIf="row && rowsStateSvc.expanded.has(row)">
   <mat-table [dataSource]="rows">
     <ng-container *ngFor="let colKey of cols" [matColumnDef]="colKey">
       <mat-header-cell *matHeaderCellDef>

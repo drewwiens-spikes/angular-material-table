@@ -1,6 +1,6 @@
-<table mat-table [dataSource]="state.rows">
+<table mat-table [dataSource]="rowsSvc.rows">
 
-  <ng-container *ngFor="let colKey of state.cols" [matColumnDef]="colKey">
+  <ng-container *ngFor="let colKey of rowsSvc.cols" [matColumnDef]="colKey">
     <th mat-header-cell *matHeaderCellDef> Col {{colKey}} </th>
     <td mat-cell *matCellDef="let row">
       <ng-container [ngSwitch]="colKey">
@@ -26,7 +26,7 @@
     </td>
   </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="state.cols; sticky: true"></tr>
-  <tr mat-row *matRowDef="let row; columns: state.cols;"></tr>
+  <tr mat-header-row *matHeaderRowDef="rowsSvc.cols; sticky: true"></tr>
+  <tr mat-row *matRowDef="let row; columns: rowsSvc.cols;"></tr>
 
 </table>

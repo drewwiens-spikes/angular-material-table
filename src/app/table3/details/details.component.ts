@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { keys, mapKeys, random, range } from 'lodash';
-import { Row, StateService } from 'src/app/state.service';
+
+import { RowsStateService } from 'src/app/services/rows-state.service';
+import { Row, RowsService } from 'src/app/services/rows.service';
 
 @Component({
   selector: 'app-details',
@@ -19,5 +21,8 @@ export class DetailsComponent {
   );
   cols = keys(this.rows[0]);
 
-  constructor(public state: StateService) {}
+  constructor(
+    public rowsSvc: RowsService,
+    public rowsStateSvc: RowsStateService
+  ) {}
 }
