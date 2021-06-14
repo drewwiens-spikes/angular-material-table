@@ -1,4 +1,4 @@
-<mat-table multiTemplateDataRows recycleRows [dataSource]="rowsSvc.rows">
+<mat-table multiTemplateDataRows [dataSource]="rowsSvc.rows">
   <ng-container matColumnDef="0">
     <mat-header-cell *matHeaderCellDef>
       <button mat-stroked-button (click)="rowsStateSvc.toggleAll()">All</button>

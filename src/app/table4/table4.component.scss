@@ -1,0 +1,40 @@
+:host {
+  grid-template-rows: auto 1fr;
+}
+
+cdk-virtual-scroll-viewport
+
+mat-table {
+  // XXX: Using display:flex approach with <mat-table> "means you cannot... have
+  // columns that resize themselves based on their content"
+  //
+  // https://material.angular.io/components/table/overview
+  //
+  // Set table's min-width and following styles as a workaround for the above:
+  min-width: 1100px;
+  width: 100vw;
+
+  > :nth-child(4n-2),
+  > :nth-child(4n-1) {
+    background-color: #f0f0f0;
+  }
+}
+
+// XXX: Material overrides styles on mat-cell, so wrap cell contents in
+// <span>'s and apply text-overflow related styles to them:
+mat-header-cell > span,
+mat-cell > span {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  color: black;
+}
+
+mat-header-row {
+  border-bottom: 1px solid black;
+}
+
+mat-row {
+  border: none;
+}
+
