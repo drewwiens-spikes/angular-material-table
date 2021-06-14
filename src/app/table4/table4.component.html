@@ -40,14 +40,15 @@
 -->
 <cdk-virtual-scroll-viewport
   autosize
-  minBufferPx="250"
-  maxBufferPx="500"
+  minBufferPx="125"
+  maxBufferPx="250"
   *ngIf="show | async"
 >
   <mat-table
-    *cdkVirtualFor="let row of rowsSvc.rows; trackBy: firstColumn"
+    *cdkVirtualFor="let row of rowsSvc.rows; trackBy: firstColumn; even as even"
     multiTemplateDataRows
     [dataSource]="[row]"
+    [class.stripe]="even"
   >
     <ng-container matColumnDef="0">
       <mat-cell *matCellDef="let row">

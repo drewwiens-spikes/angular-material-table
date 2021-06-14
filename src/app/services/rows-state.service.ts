@@ -7,6 +7,7 @@ import { Row, RowsService } from './rows.service';
 export class RowsStateService {
   expanded: Set<Row> = new Set();
   collapsed: Set<Row> = new Set(this.rowsSvc.rows);
+  before: number | undefined;
 
   constructor(private snackBar: MatSnackBar, private rowsSvc: RowsService) {}
 
@@ -21,7 +22,7 @@ export class RowsStateService {
   }
 
   toggleAll() {
-    const before = performance.now();
+    const before = this.before || performance.now();
     const showElapsedTime = (label: string) => {
       const after = performance.now();
       const diff = Math.round(after - before);

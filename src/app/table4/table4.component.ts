@@ -1,8 +1,7 @@
-import { AutoSizeVirtualScrollStrategy } from '@angular/cdk-experimental/scrolling';
-import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
+import { CdkVirtualScrollViewport as Viewport } from '@angular/cdk/scrolling';
 import { Component, ViewChild } from '@angular/core';
-import { range } from 'lodash';
-import { BehaviorSubject, } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
+import { take } from 'rxjs/operators';
 
 import { RowsStateService } from '../services/rows-state.service';
 import { Row, RowsService } from '../services/rows.service';
@@ -13,40 +12,45 @@ import { Row, RowsService } from '../services/rows.service';
   styleUrls: ['./table4.component.scss'],
 })
 export class Table4Component {
-  @ViewChild(CdkVirtualScrollViewport)
-  autosize?: CdkVirtualScrollViewport;
+  @ViewChild(Viewport) set viewport(_vp: Viewport) {
+    this.viewportChanges.next();
+  }
 
   show = new BehaviorSubject<boolean>(true);
+
+  private viewportChanges = new Subject<void>();
 
   constructor(
     public rowsSvc: RowsService,
     public rowsStateSvc: RowsStateService
   ) {}
 
+  /** Get the value of the cell in the 1st column */
   firstColumn(_index: number, item: Row) {
-    return item['0']; // Return value of 1st column
+    return item['0'];
   }
 
-  toggleAll() {
-    this.show.next(false);
+  /** Expand or collapse all rows */
+  async toggleAll() {
+    this.rowsStateSvc.before = performance.now();
+
+    // XXX: "scrollToIndex is currently not supported for the autosize scroll
+    // strategy" --> Have to reset the scroll position to the top:
+    await this.hideViewport();
 
     this.rowsStateSvc.toggleAll();
 
-    setTimeout(() =>
-      this.show.next(true));// Force re-evaluate average row size
+    await this.showViewport();
+  }
 
-    // setTimeout(()=>{
-    //   if (this.autosize) {
-    //     // this.autosize.scrollToIndex(0)
-    //     // for (const _i of range(100)) {
-    //     //   this.autosize['_updateRenderedContentAfterScroll']()
-    //     // }
-    //     this.autosize.scrollTo({top:0})
-    //   }
-    // }, 2000)
+  /** Add (or remove) CDK virtual scroll viewport from the DOM */
+  private async showViewport(shouldShow = true) {
+    this.show.next(shouldShow);
+    await this.viewportChanges.pipe(take(1)).toPromise();
+  }
 
-
-
-    // setTimeout(() => this.show.next(true));
+  /** Remove CDK virtual scroll viewport from the DOM */
+  private async hideViewport() {
+    await this.showViewport(false);
   }
 }

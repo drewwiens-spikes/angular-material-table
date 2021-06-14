@@ -2,8 +2,6 @@
   grid-template-rows: auto 1fr;
 }
 
-cdk-virtual-scroll-viewport
-
 mat-table {
   // XXX: Using display:flex approach with <mat-table> "means you cannot... have
   // columns that resize themselves based on their content"
@@ -13,11 +11,6 @@ mat-table {
   // Set table's min-width and following styles as a workaround for the above:
   min-width: 1100px;
   width: 100vw;
-
-  > :nth-child(4n-2),
-  > :nth-child(4n-1) {
-    background-color: #f0f0f0;
-  }
 }
 
 // XXX: Material overrides styles on mat-cell, so wrap cell contents in
@@ -38,3 +31,6 @@ mat-row {
   border: none;
 }
 
+.stripe {
+  background-color: #f0f0f0;
+}
