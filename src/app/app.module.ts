@@ -11,6 +11,8 @@ import { Route, RouterModule } from '@angular/router';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { ScrollingModule as ExperimentalScrollingModule } from '@angular/cdk-experimental/scrolling'; // TODO: Remove this lib from package.json when AutoSizeVirtualScrollStrategy becomes part of CDK
 
 import { AppComponent } from './app.component';
 import { Table0Component } from './table0/table0.component';
@@ -35,6 +37,13 @@ const routes: Route[] = [
   {path:'7', component:Table7Component },
 ]
 
+/** Imports from Angular Material CDK */
+const cdkImports = [
+  ScrollingModule,
+  ExperimentalScrollingModule,
+];
+
+/** Imports from Angular Material */
 const matImports = [
   MatTableModule,
   MatToolbarModule,
@@ -44,7 +53,7 @@ const matImports = [
   MatSnackBarModule,
   MatIconModule,
   MatButtonModule,
-]
+];
 
 @NgModule({
   declarations: [
@@ -61,6 +70,7 @@ const matImports = [
   ],
   imports: [
     ...matImports,
+    ...cdkImports,
     BrowserModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,

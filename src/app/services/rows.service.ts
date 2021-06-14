@@ -6,7 +6,7 @@ type Value = string | number | boolean;
 export type Row = Record<string, Value>;
 
 const NUM_ROWS = 250;
-const NUM_COLS = 25;
+const NUM_COLS = 12;
 const VALUES = range(NUM_ROWS * NUM_COLS).map(() => random(1, 1000));
 const ROWS = chunk(VALUES, NUM_COLS);
 
