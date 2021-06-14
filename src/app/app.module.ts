@@ -23,6 +23,7 @@ import { Table4Component } from './table4/table4.component';
 import { Table5Component } from './table5/table5.component';
 import { Table6Component } from './table6/table6.component';
 import { Table7Component } from './table7/table7.component';
+import { Table8Component } from './table8/table8.component';
 import { DetailsComponent } from './table3/details/details.component';
 
 const routes: Route[] = [
@@ -35,6 +36,7 @@ const routes: Route[] = [
   {path:'5', component:Table5Component },
   {path:'6', component:Table6Component },
   {path:'7', component:Table7Component },
+  {path:'8', component:Table8Component },
 ]
 
 /** Imports from Angular Material CDK */
@@ -67,6 +69,7 @@ const matImports = [
     Table6Component,
     Table7Component,
     DetailsComponent,
+    Table8Component,
   ],
   imports: [
     ...matImports,
