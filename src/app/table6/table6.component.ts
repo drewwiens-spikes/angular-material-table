@@ -25,11 +25,6 @@ export class Table6Component {
     public rowsStateSvc: RowsStateService
   ) {}
 
-  /** Get the value of the cell in the 1st column */
-  firstColumn(_index: number, item: Row) {
-    return item['0'];
-  }
-
   /** Expand or collapse all rows */
   async toggleAll() {
     this.rowsStateSvc.before = performance.now();

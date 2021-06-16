@@ -18,4 +18,9 @@ export class RowsService {
 
   // Only used for examples that use 'ng-table-virtual-scroll' lib:
   dataSource = new TableVirtualScrollDataSource(this.rows);
+
+  /** Get the value of the cell in the 1st column */
+  firstColumn(_index: number, item: Row) {
+    return item['0'];
+  }
 }

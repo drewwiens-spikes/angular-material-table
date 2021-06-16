@@ -45,7 +45,7 @@
   *ngIf="show | async"
 >
   <mat-table
-    *cdkVirtualFor="let row of rowsSvc.rows; trackBy: firstColumn; even as even"
+    *cdkVirtualFor="let row of rowsSvc.rows; trackBy: rowsSvc.firstColumn; even as even"
     multiTemplateDataRows
     [dataSource]="[row]"
     [class.stripe]="even"

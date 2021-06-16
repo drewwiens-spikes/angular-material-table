@@ -1,5 +1,5 @@
 <cdk-virtual-scroll-viewport tvsItemSize>
-  <table mat-table [dataSource]="rowsSvc.dataSource">
+  <table mat-table [dataSource]="rowsSvc.dataSource" [trackBy]="rowsSvc.firstColumn">
     <ng-container *ngFor="let colKey of rowsSvc.cols" [matColumnDef]="colKey">
       <th mat-header-cell *matHeaderCellDef>Col {{ colKey }}</th>
       <td mat-cell *matCellDef="let row">{{ row[colKey] }}</td>
